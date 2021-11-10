@@ -68,25 +68,26 @@ document.addEventListener("DOMContentLoaded", function() {
             redirect: 'follow',
         };
 
-        fetch("http://localhost:8080/EjercicioIntegrador3/registroestudiantes" + "/carreras/searchname/" + idEstudiante + "", requestOptions)
+        fetch("http://localhost:8080/producto/" + idEstudiante + "", requestOptions)
             .then(response => response.json())
             .then(carrera => {
 
                 let string = `<li href="#" class="list-group-item text-left">
                     <div class="contentEstudiente">
-                        <img class="img-thumbnail " src="https://bootdey.com/img/Content/User_for_snippets.png">
+                        <img class="img-thumbnail" src="https://bootdey.com/img/Content/user_2.jpg">
                         <label class="name ms-2">
-                            ${carrera.nombreProducto}<br>
-                      </label>
-                  </div>
-                  <div class="abmEstudient">
-                      <span class="pull-right">
-                          <i class="far fa-eye mt-4"></i>
-                          <a class="btn-delete" id="${carrera.marca}" type="button"><i class="fas fa-trash-alt color-danger ms-3"></i></a>
-                          <i class="fas fa-envelope-square ms-3"></i>
-                      </span>
-                  </div>
-                  <!-- <div class="break"></div> -->
+                            nombre : ${carrera.nombreProducto} 
+                        </label>
+                        <label class="name ms-2">
+                            marca : ${carrera.marca} 
+                        </label>
+                    </div>
+                    <div class="abmEstudient">
+                        <span class="pull-right ">
+                            <span><i class="fas fa-users mt-4"></i> 15</span>
+                            <a class="btn-delete"  id="${carrera.idCarrera}" type="button"><i class="fas fa-trash-alt color-danger ms-3 mt-4"></i></a>
+                        </span>
+                    </div>
                 </li>`;
                 document.querySelector(".ctn-productos").innerHTML = string;
                 const btn = document.querySelectorAll(".btn-delete");
