@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error(error));
     }
 
-    function deleteCliente(idEstudiante) {
+    function deleteCliente(id) {
         let myHeaders = new Headers();
         let requestOptions = {
             method: 'DELETE',
             headers: myHeaders,
             redirect: 'follow',
         };
-        fetch("http://localhost:8080/EjercicioIntegrador3/registroestudiantes/estudiantes/" + idEstudiante, requestOptions)
+        fetch("http://localhost:8080/cliente/" + id, requestOptions)
             .then(res => {
                 console.log(res);
                 getClientes();
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const btn = document.querySelectorAll(".btn-delete-student");
                 for (let i = 0; i < btn.length; i++) {
                     btn[i].addEventListener("click", function() {
-                        deleteEstudiante(btn[i].id)
+                        deleteCliente(btn[i].id)
                     });
                 }
             })

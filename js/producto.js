@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let carreras = [];
+    let productos = [];
 
     function getProductos() {
         let myHeaders = new Headers();
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch("http://localhost:8080/productos", requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                productos= data;
                 let string = ""
                 data.forEach(carrera => {
                     string += `<li href="#" class="list-group-item text-left">
@@ -51,41 +51,40 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: myHeaders,
             redirect: 'follow',
         };
-        fetch("http://localhost:8080/EjercicioIntegrador3/registroestudiantes/carreras/" + id, requestOptions)
+        fetch("http://localhost:8080/producto/" + id, requestOptions)
             .then(res => {
-                console.log(res);
                 getProductos();
             })
             .catch((error) => console.log(error))
     }
 
-    function filter(idEstudiante) {
-        //  console.log(idEstudiante)
+    function filter(nombre) {
+        let producto= productos.find(producto => producto.nombreProducto == nombre)
 
-        let myHeaders = new Headers();
-        let requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-        };
+        // let myHeaders = new Headers();
+        // let requestOptions = {
+        //     method: 'GET',
+        //     redirect: 'follow',
+        // };
 
-        fetch("http://localhost:8080/producto/" + idEstudiante + "", requestOptions)
-            .then(response => response.json())
-            .then(carrera => {
+        // fetch("http://localhost:8080/producto/" + idEstudiante + "", requestOptions)
+        //     .then(response => response.json())
+        //     .then(carrera => {
 
                 let string = `<li href="#" class="list-group-item text-left">
                     <div class="contentEstudiente">
                         <img class="img-thumbnail" src="https://bootdey.com/img/Content/user_2.jpg">
                         <label class="name ms-2">
-                            nombre : ${carrera.nombreProducto} 
+                            nombre : ${producto.nombreProducto} 
                         </label>
                         <label class="name ms-2">
-                            marca : ${carrera.marca} 
+                            marca : ${producto.marca} 
                         </label>
                     </div>
                     <div class="abmEstudient">
                         <span class="pull-right ">
                             <span><i class="fas fa-users mt-4"></i> 15</span>
-                            <a class="btn-delete"  id="${carrera.idCarrera}" type="button"><i class="fas fa-trash-alt color-danger ms-3 mt-4"></i></a>
+                            <a class="btn-delete"  id="${producto.id}" type="button"><i class="fas fa-trash-alt color-danger ms-3 mt-4"></i></a>
                         </span>
                     </div>
                 </li>`;
@@ -93,11 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 const btn = document.querySelectorAll(".btn-delete");
                 for (let i = 0; i < btn.length; i++) {
                     btn[i].addEventListener("click", function() {
-                        deleteEstudiante(btn[i].id)
+                        deleteProducto(btn[i].id)
                     });
                 }
-            })
-            .catch(error => console.error(error));
+            // })
+            // .catch(error => console.error(error));
     }
 
     document.querySelector(".btn-search").addEventListener('click', function() {
