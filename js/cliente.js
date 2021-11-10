@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         //ESTO SE AVANZA EN LA SEGUNDA PARTE 
-        fetch("http://localhost:8080/EjercicioIntegrador3/registroestudiantes" + "/estudiantes", requestOptions)
+        fetch("http://localhost:8080/clientes", requestOptions)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 estudiantes = data;
                 let string = ""
                 data.forEach(estudiante => {
@@ -102,5 +103,5 @@ document.addEventListener("DOMContentLoaded", function() {
         let id = document.querySelector(".input-search").value;
         filterEstudiante(id);
     })
-    getEstudiantes();
+    getClientes();
 });

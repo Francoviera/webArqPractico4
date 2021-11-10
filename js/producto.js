@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         //ESTO SE AVANZA EN LA SEGUNDA PARTE 
-        fetch("http://localhost:8080/EjercicioIntegrador3/registroestudiantes/carreras", requestOptions)
+        fetch("http://localhost:8080/productos", requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="contentEstudiente">
                         <img class="img-thumbnail" src="https://bootdey.com/img/Content/user_2.jpg">
                         <label class="name ms-2">
-                            carrera : ${carrera.nombreCarrera} facultad: ${carrera.facultad.nombreFacultad}
+                            nombre : ${carrera.nombreProducto} 
+                        </label>
+                        <label class="name ms-2">
+                            marca : ${carrera.marca} 
                         </label>
                     </div>
                     <div class="abmEstudient">
@@ -73,19 +76,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="contentEstudiente">
                         <img class="img-thumbnail " src="https://bootdey.com/img/Content/User_for_snippets.png">
                         <label class="name ms-2">
-                            ${carrera.nombreCarrera}<br>
+                            ${carrera.nombreProducto}<br>
                       </label>
                   </div>
                   <div class="abmEstudient">
                       <span class="pull-right">
                           <i class="far fa-eye mt-4"></i>
-                          <a class="btn-delete" id="${carrera.idCarrera}" type="button"><i class="fas fa-trash-alt color-danger ms-3"></i></a>
+                          <a class="btn-delete" id="${carrera.marca}" type="button"><i class="fas fa-trash-alt color-danger ms-3"></i></a>
                           <i class="fas fa-envelope-square ms-3"></i>
                       </span>
                   </div>
                   <!-- <div class="break"></div> -->
                 </li>`;
-                document.querySelector(".ctn-carreras").innerHTML = string;
+                document.querySelector(".ctn-productos").innerHTML = string;
                 const btn = document.querySelectorAll(".btn-delete");
                 for (let i = 0; i < btn.length; i++) {
                     btn[i].addEventListener("click", function() {
@@ -102,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
 
-    getCarreras();
+    getProductos();
 
 
 });
