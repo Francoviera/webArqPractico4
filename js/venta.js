@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     let reportesCarrera = [];
 
+    function dateToString(date){
+        return new Date(date).toLocaleDateString("es-ES", { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})
+    }
+
+    function getImage(){
+        let images= [
+            "https://www.bootdey.com/img/Content/User_for_snippets.png",
+            "https://bootdey.com/img/Content/user_2.jpg"
+        ]
+        return images[Math.round(Math.random()*1)];
+    }
+
     function getVentas() {
         let myHeaders = new Headers();
         let requestOptions = {
@@ -17,22 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     string += `<li href="#" class="list-group-item text-left">
                     <div class="contentEstudiente">
                         <img class="img-thumbnail mb-3"
-                            src="https://bootdey.com/img/Content/User_for_snippets.png">
+                            src="${getImage()}">
                         <label class="name ms-4">
                             <h6>Cliente</h6>
-                            <p>${item.cliente.nombre+" "+ item.cliente.apellido}</p>
+                            <p class="text-dark">${item.cliente.nombre+" "+ item.cliente.apellido}</p>
                         </label>
                         <label class="name ms-4">
                             <h6>Cantidad de Pedidos</h6>
-                            <p>${item.pedidos.length}</p>
+                            <p class="text-dark">${item.pedidos.length}</p>
                         </label>
                         <label class="name ms-4">
                             <h6>Fecha de Compra</h6>
-                            <p>${item.momentoCompra}</p>
+                            <p class="text-dark">${dateToString(item.momentoCompra)+"HS"}</p>
                         </label>
                         <label class="name ms-4">
                             <h6>Total</h6>
-                            <p>${item.precioTotal}</p>
+                            <p class="text-danger">${item.precioTotal}</p>
                         </label>
                     </div>
                     <div class="abmEstudient">

@@ -12,6 +12,9 @@ nav{
 nav a {
     color: #AA6C39 !important;
 }
+nav a:hover {
+    color: white !important;
+}
 .container{
     margin: 0;
 }

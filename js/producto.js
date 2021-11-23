@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     let productos = [];
 
+
+    function getImage(){
+        let images= [
+            "https://www.bootdey.com/img/Content/User_for_snippets.png",
+            "https://bootdey.com/img/Content/user_2.jpg"
+        ]
+        return images[Math.round(Math.random()*1)];
+    }
+
     function getProductos() {
         let myHeaders = new Headers();
         let requestOptions = {
@@ -17,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 data.forEach(carrera => {
                     string += `<li href="#" class="list-group-item text-left">
                     <div class="contentEstudiente">
-                        <img class="img-thumbnail" src="https://bootdey.com/img/Content/user_2.jpg">
+                        <img class="img-thumbnail" src="${getImage()}">
                         <label class="name ms-2">
-                            nombre : ${carrera.nombreProducto} 
+                            <span class="text-dark">Nombre :</span>  ${carrera.nombreProducto} 
                         </label>
                         <label class="name ms-2">
-                            marca : ${carrera.marca} 
+                            <span class="text-dark">Marca :</span> ${carrera.marca} 
                         </label>
                     </div>
                     <div class="abmEstudient">
