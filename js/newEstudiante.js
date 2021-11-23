@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 redirect: 'follow',
                 body: data,
             };
-            fetch("http://localhost:8080/clientes", requestOptions)
+            fetch("https://despensa-springboot.herokuapp.com/clientes", requestOptions)
                 .then(res => res.json())
                 .then(json => {
                     console.log(json);

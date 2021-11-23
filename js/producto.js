@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         //ESTO SE AVANZA EN LA SEGUNDA PARTE 
-        fetch("http://localhost:8080/productos", requestOptions)
+        fetch("https://despensa-springboot.herokuapp.com/productos", requestOptions)
             .then(response => response.json())
             .then(data => {
                 productos= data;
