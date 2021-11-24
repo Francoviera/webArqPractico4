@@ -1,5 +1,5 @@
 .nav{
-    background-color: #AA3939;
+    background-color: #AA3939 !important;
 }
 nav a {
     color: #AA6C39 !important;
@@ -7,3 +7,17 @@ nav a {
 nav a:hover {
     color: white !important;
 }
+.block{
+    background-color: black;
+}
+.block img{
+    width: 100%;
+    height: auto;
+  }
+  @supports(object-fit: cover){
+      .box img{
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+  }

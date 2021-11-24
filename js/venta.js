@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         </label>
                         <label class="name ms-4">
                             <h6>Total</h6>
-                            <p class="text-danger">${item.precioTotal}</p>
+                            <p class="text-danger">$ ${item.precioTotal.toFixed(2)}</p>
                         </label>
                     </div>
                     <div class="abmEstudient">

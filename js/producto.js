@@ -54,10 +54,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function getImage(){
         let images= [
-            "https://www.bootdey.com/img/Content/User_for_snippets.png",
-            "https://bootdey.com/img/Content/user_2.jpg"
+            "./assets/images/Fideos.jpg",
+            "./assets/images/harina.jpg",
+            "./assets/images/harina2.jpg",
+            "./assets/images/salfina.jpg",
+            "./assets/images/mayonesa.jpg",
         ]
-        return images[Math.round(Math.random()*1)];
+        console.log(Math.round(Math.random()*4));
+        return images[Math.round(Math.random()*4)];
     }
 
     function getProductos() {
