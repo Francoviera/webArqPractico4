@@ -1,5 +1,55 @@
 document.addEventListener("DOMContentLoaded", function() {
     let estudiantes = [];
+    let clientesToView= [];
+    let index= 0;
+    loading= false;
+
+    window.onscroll = function(ev) {
+        if ((window.innerHeight + window.scrollY) >= ((document.body.offsetHeight *80)/100)) {
+            if(!loading && index < estudiantes.length){
+                loading= true;
+
+
+                let cantidad= 8;
+                if(index+8 > estudiantes.length){
+                    cantidad= (estudiantes.length-index)+1;
+                }
+                for (let i = index-1; i < (index+8); i++) {
+                    clientesToView.push(estudiantes[i]);
+                }
+                index+= 8;
+                loading = false;
+                
+                let string = ""
+                clientesToView.forEach(estudiante => {
+                    string += `<li href="#" class="list-group-item text-left">
+                    <div class="contentEstudiente">
+                        <img class="img-thumbnail " src="${getImage()}">
+                        <label class="name ms-2">
+                            ${estudiante.nombre} ${estudiante.apellido}<br>
+                      </label>
+                  </div>
+                  <div class="abmEstudient">
+                      <span class="pull-right">
+                          <i class="far fa-eye mt-4"></i>
+                          <a class="btn-delete-student" id="${estudiante.nroEstudiante}" type="button"><i class="fas fa-trash-alt text-danger ms-3"></i></a>
+                          <i class="fas fa-envelope-square ms-3"></i>
+                      </span>
+                  </div>
+                  <!-- <div class="break"></div> -->
+                </li>`;
+                });
+                document.querySelector(".ctn-clientes").innerHTML = string;
+                const btn = document.querySelectorAll(".btn-delete-student");
+                for (let i = 0; i < btn.length; i++) {
+                    btn[i].addEventListener("click", function() {
+                        deleteCliente(btn[i].id)
+                    });
+                }
+            }
+        }
+    };
+
 
     function getImage(){
         let images= [
@@ -22,8 +72,12 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 console.log(data)
                 estudiantes = data;
+                for (let i = 0; i < 8; i++) {
+                    clientesToView.push(estudiantes[i]);       
+                }
+                index= 8;
                 let string = ""
-                data.forEach(estudiante => {
+                clientesToView.forEach(estudiante => {
                     string += `<li href="#" class="list-group-item text-left">
                     <div class="contentEstudiente">
                         <img class="img-thumbnail " src="${getImage()}">
